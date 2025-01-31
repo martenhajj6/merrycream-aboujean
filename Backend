@@ -1,0 +1,38 @@
+const express = require("express");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "your_email@gmail.com",
+    pass: "your_app_password",
+  },
+});
+
+app.post("/order", (req, res) => {
+  const { name, email, flavor, size, toppings, container, quantity } = req.body;
+
+  const mailOptions = {
+    from: "your_email@gmail.com",
+    to: "your_email@gmail.com", // You receive the order here
+    subject: "New Ice Cream Order!",
+    text: `New order from ${name} (${email}):\nFlavor: ${flavor}\nSize: ${size}\nToppings: ${toppings.join(", ")}\nContainer: ${container}\nQuantity: ${quantity}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send("Email not sent.");
+    } else {
+      console.log("Email sent: " + info.response);
+      res.status(200).send("Order received.");
+    }
+  });
+});
+
+app.listen(5000, () => console.log("Server running on port 5000"));
