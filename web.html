@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Cream Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Merry Cream</h1>
+    </header>
+
+    <div class="login-container">
+        <button id="google-signin">Sign in with Google</button>
+        <p id="user-info"></p>
+    </div>
+
+    <section class="menu">
+        <h2>Choose Your Ice Cream</h2>
+        <form id="order-form">
+            <label>Flavor:</label>
+            <select id="flavor">
+                <option value="vanilla">Vanilla</option>
+                <option value="chocolate">Chocolate</option>
+            </select>
+
+            <label>Topping:</label>
+            <select id="topping">
+                <option value="none">No Topping</option>
+                <option value="caramel">Caramel</option>
+                <option value="chocolate">Chocolate</option>
+            </select>
+
+            <label>Container:</label>
+            <select id="container">
+                <option value="biscuit">Biscuit</option>
+                <option value="cup">Cup</option>
+            </select>
+
+            <label>Size:</label>
+            <select id="size">
+                <option value="small">Small - 150 LBP</option>
+                <option value="large">Large - 200 LBP</option>
+            </select>
+
+            <label>Extra Topping (50,000 LBP each):</label>
+            <input type="number" id="extra-topping" min="0" value="0">
+
+            <label>Quantity:</label>
+            <input type="number" id="quantity" min="1" value="1">
+
+            <label>Delivery Location:</label>
+            <input type="text" id="location" placeholder="Enter your location">
+
+            <button type="submit">Order Now</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
